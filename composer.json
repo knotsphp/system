@@ -20,8 +20,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": "^8.2",
-    "ext-pcre": "*",
-    "symfony/process": "^7.2"
+    "ext-pcre": "*"
   },
   "require-dev": {
     "laravel/pint": "^1.18",
