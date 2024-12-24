@@ -10,8 +10,6 @@ final class Linux implements OperatingSystem
 
     private ?string $cached_version = null;
 
-    private ?string $cached_release = null;
-
     public function __construct()
     {
         $this->retrieveFromEtcOsRelease();
@@ -34,7 +32,6 @@ final class Linux implements OperatingSystem
         /** @var string[] $ini */
         $this->cached_name = $ini['NAME'] ?? '';
         $this->cached_version = preg_replace('/^((\d.?)*)\s.*/m', '$1', $ini['VERSION'] ?? '');
-        $this->cached_release = $ini['VERSION_ID'] ?? '';
     }
 
     public function name(): string
@@ -47,8 +44,13 @@ final class Linux implements OperatingSystem
         return $this->cached_version ?? php_uname('v');
     }
 
-    public function release(): string
+    public function kernel(): string
     {
-        return $this->cached_release ?? php_uname('r');
+        return php_uname('r');
+    }
+
+    public function buildVersion(): string
+    {
+        return php_uname('r');
     }
 }

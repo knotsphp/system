@@ -46,7 +46,7 @@ final class MacOS implements OperatingSystem
         return $this->cached_version ?? Shell::execOrFail('sw_vers --productVersion');
     }
 
-    public function release(): string
+    public function kernel(): string
     {
         return php_uname('r');
     }

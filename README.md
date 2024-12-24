@@ -8,6 +8,10 @@
 
 A modern PHP library to get system information with Enums and Value Objects.
 
+The goal is to have reliable and consistent system information across different operating systems.
+
+This library use local commands to get the system information and parse the output to provide a consistent API.
+
 It also provides a command line utility: `sysinfo`.
 
 Compatible with MacOS, Linux, and Windows.

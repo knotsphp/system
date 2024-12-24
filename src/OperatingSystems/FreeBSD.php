@@ -22,7 +22,12 @@ final class FreeBSD implements OperatingSystem
         return php_uname('v');
     }
 
-    public function release(): string
+    public function kernel(): string
+    {
+        return php_uname('r');
+    }
+
+    public function buildVersion(): string
     {
         return php_uname('r');
     }

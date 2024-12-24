@@ -8,5 +8,7 @@ interface OperatingSystem
 
     public function version(): string;
 
-    public function release(): string;
+    public function kernel(): string;
+
+    public function buildVersion(): string;
 }
