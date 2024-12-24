@@ -39,6 +39,8 @@ final class Windows implements OperatingSystem
             $infos[trim($parts[0])] = trim($parts[1] ?? '');
         }
 
+        $this->cached_name = 'Windows';
+
         if (str_contains($infos['Caption'], 'Server')) {
             // Server 2022
             $this->cached_edition = implode(' ', array_slice(explode(' ', $infos['Caption']), 2));
@@ -49,8 +51,6 @@ final class Windows implements OperatingSystem
             $this->cached_version = preg_replace('/.+\s(\d+)\s.*/m', '$1', $infos['Version'] ?? '');
         }
 
-        $this->cached_name = preg_replace('/(.+\s)\d+\s.*/m', '$1', $infos['Caption'] ?? '');
-
         $this->cached_build_version = $this->getDisplayVersion();
 
         $this->cached_kernel = $this->getFullVersionNumber() ?: ($infos['Version'] ?? null);
@@ -58,7 +58,7 @@ final class Windows implements OperatingSystem
 
     private function getFullVersionNumber(): ?string
     {
-        return preg_replace('/^.*\[version\s((\d+.?)*)\]/m', '$1', Shell::exec('ver'));
+        return preg_replace('/.*\[.*\s((\d+.?)*)\]/m', '$1', Shell::exec('ver'));
     }
 
     /**
