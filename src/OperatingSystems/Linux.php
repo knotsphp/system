@@ -33,7 +33,7 @@ final class Linux implements OperatingSystem
 
         /** @var string[] $ini */
         $this->cached_name = $ini['NAME'] ?? '';
-        $this->cached_version = $ini['VERSION'] ?? '';
+        $this->cached_version = preg_replace('/^((\d.?)*)\s.*/m', '$1', $ini['VERSION'] ?? '');
         $this->cached_release = $ini['VERSION_ID'] ?? '';
     }
 

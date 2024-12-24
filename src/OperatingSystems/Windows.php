@@ -67,4 +67,9 @@ final class Windows implements OperatingSystem
     {
         return $this->cached_edition ?? '';
     }
+
+    public function isServer(): bool
+    {
+        return str_contains($this->name(), 'Server');
+    }
 }
