@@ -42,7 +42,7 @@ It's recommended to install the library globally to use it in the command line.
 composer global require knotsphp/system
 ```
 
-Then you can use the `system` command to get the public IP address of the current machine.
+Then you can use the `sysinfo` command.
 ```bash
 # In your project directory
 vendor/bin/sysinfo
@@ -54,7 +54,8 @@ sysinfo
 ## 📖 Documentation
 This library is compatible with MacOS, Linux, and Windows.
 
-Some operating systems may require root access to flush the DNS cache.
+Contributions are welcome to add more operating systems.
+
 
 ## 🤝 Contributing
 Clone the project and run `composer update` to install the dependencies.
