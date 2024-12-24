@@ -2,7 +2,7 @@
 
 namespace KnotsPHP\System\OperatingSystems;
 
-use KnotsPHP\System\Contracts\OperatingSystem;
+use KnotsPHP\System\Contracts\OperatingSystemContract;
 
 /**
  * Warning: This class is not implemented yet.
@@ -10,7 +10,7 @@ use KnotsPHP\System\Contracts\OperatingSystem;
  * If anyone has a FreeBSD CI/CD pipeline, please contribute to this project.
  * Or contact me @SRWieZ on GitHub.
  */
-final class FreeBSD implements OperatingSystem
+final class FreeBSD implements OperatingSystemContract
 {
     public function name(): string
     {
@@ -27,7 +27,7 @@ final class FreeBSD implements OperatingSystem
         return php_uname('r');
     }
 
-    public function buildVersion(): string
+    public function build(): string
     {
         return php_uname('r');
     }

@@ -2,11 +2,11 @@
 
 namespace KnotsPHP\System\OperatingSystems;
 
-use KnotsPHP\System\Contracts\OperatingSystem;
+use KnotsPHP\System\Contracts\OperatingSystemContract;
 use KnotsPHP\System\Exceptions\InvalidArgumentException;
 use KnotsPHP\System\Helpers\Shell;
 
-final class Windows implements OperatingSystem
+final class Windows implements OperatingSystemContract
 {
     private ?string $cached_name = null;
 
@@ -122,7 +122,7 @@ final class Windows implements OperatingSystem
         return null;
     }
 
-    public function buildVersion(): string
+    public function build(): string
     {
         return $this->cached_build_version ?? '';
     }

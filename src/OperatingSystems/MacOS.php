@@ -2,10 +2,10 @@
 
 namespace KnotsPHP\System\OperatingSystems;
 
-use KnotsPHP\System\Contracts\OperatingSystem;
+use KnotsPHP\System\Contracts\OperatingSystemContract;
 use KnotsPHP\System\Helpers\Shell;
 
-final class MacOS implements OperatingSystem
+final class MacOS implements OperatingSystemContract
 {
     private ?string $cached_name = null;
 
@@ -51,7 +51,7 @@ final class MacOS implements OperatingSystem
         return php_uname('r');
     }
 
-    public function buildVersion(): string
+    public function build(): string
     {
         return $this->cached_build_version ?? Shell::execOrFail('sw_vers --buildVersion');
     }

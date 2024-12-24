@@ -2,7 +2,7 @@
 
 namespace KnotsPHP\System;
 
-use KnotsPHP\System\Contracts\OperatingSystem as OperatingSystemContract;
+use KnotsPHP\System\Contracts\OperatingSystemContract as OperatingSystemContract;
 use KnotsPHP\System\Enums\OperatingSystem;
 
 class System

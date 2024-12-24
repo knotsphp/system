@@ -2,7 +2,7 @@
 
 namespace KnotsPHP\System\Contracts;
 
-interface OperatingSystem
+interface OperatingSystemContract
 {
     public function name(): string;
 
@@ -10,5 +10,5 @@ interface OperatingSystem
 
     public function kernel(): string;
 
-    public function buildVersion(): string;
+    public function build(): string;
 }

@@ -27,4 +27,4 @@ $os = System::os();
 echo '> OS : '.$os->name().PHP_EOL;
 echo '> Version : '.$os->version().PHP_EOL;
 echo '> Kernel : '.$os->kernel().PHP_EOL;
-echo '> Build : '.$os->buildVersion().PHP_EOL;
+echo '> Build : '.$os->build().PHP_EOL;

@@ -21,7 +21,7 @@ arch('exceptions')
 
 arch('library.operating-system')
     ->expect('KnotsPHP\System\OperatingSystems')
-    ->toImplement('KnotsPHP\System\Contracts\OperatingSystem')
+    ->toImplement('KnotsPHP\System\Contracts\OperatingSystemContract')
     ->toBeFinal();
 
 arch('debug')->preset()->php();

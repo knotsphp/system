@@ -2,9 +2,9 @@
 
 namespace KnotsPHP\System\OperatingSystems;
 
-use KnotsPHP\System\Contracts\OperatingSystem;
+use KnotsPHP\System\Contracts\OperatingSystemContract;
 
-final class Linux implements OperatingSystem
+final class Linux implements OperatingSystemContract
 {
     private ?string $cached_name = null;
 
@@ -49,7 +49,7 @@ final class Linux implements OperatingSystem
         return php_uname('r');
     }
 
-    public function buildVersion(): string
+    public function build(): string
     {
         return php_uname('r');
     }
