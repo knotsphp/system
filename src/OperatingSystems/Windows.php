@@ -37,7 +37,7 @@ final class Windows implements OperatingSystem
 
         $this->cached_edition = preg_replace('/.+\s\d+\s(.*)/m', '$1', $infos['Caption'] ?? '');
 
-        $this->cached_name = preg_replace('/(.+\s\d+)\s.*/m', '$1', $infos['Caption'] ?? '');
+        $this->cached_name = preg_replace('/(.+\s)\d+\s.*/m', '$1', $infos['Caption'] ?? '');
         $this->cached_version = preg_replace('/.+\s(\d+)\s.*/m', '$1', $infos['Caption'] ?? '');
         $this->cached_release = $infos['Version'] ?? null;
         $this->cached_build_version = $infos['BuildNumber'] ?? null;
