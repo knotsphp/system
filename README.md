@@ -1,16 +1,10 @@
 # System
-
-[//]: # ([![Latest Stable Version]&#40;https://poser.pugx.org/knotsphp/system/v&#41;]&#40;https://packagist.org/packages/knotsphp/system&#41; )
-
-[//]: # ([![Total Downloads]&#40;https://poser.pugx.org/knotsphp/system/downloads&#41;]&#40;https://packagist.org/packages/knotsphp/system&#41; )
-
-[//]: # ([![Latest Unstable Version]&#40;https://poser.pugx.org/knotsphp/system/v/unstable&#41;]&#40;https://packagist.org/packages/knotsphp/system&#41; )
-
-[//]: # ([![License]&#40;https://poser.pugx.org/knotsphp/system/license&#41;]&#40;https://packagist.org/packages/knotsphp/system&#41; )
-
-[//]: # ([![PHP Version Require]&#40;https://poser.pugx.org/knotsphp/system/require/php&#41;]&#40;https://packagist.org/packages/knotsphp/system&#41; )
-
-[//]: # ([![GitHub Workflow Status &#40;with event&#41;]&#40;https://img.shields.io/github/actions/workflow/status/knotsphp/system/test.yml?label=Tests&#41;]&#40;https://github.com/knotsphp/system/actions/workflows/test.yml&#41;)
+[![Latest Stable Version](https://poser.pugx.org/knotsphp/system/v)](https://packagist.org/packages/knotsphp/system) 
+[![Total Downloads](https://poser.pugx.org/knotsphp/system/downloads)](https://packagist.org/packages/knotsphp/system) 
+[![Latest Unstable Version](https://poser.pugx.org/knotsphp/system/v/unstable)](https://packagist.org/packages/knotsphp/system) 
+[![License](https://poser.pugx.org/knotsphp/system/license)](https://packagist.org/packages/knotsphp/system) 
+[![PHP Version Require](https://poser.pugx.org/knotsphp/system/require/php)](https://packagist.org/packages/knotsphp/system) 
+[![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/knotsphp/system/test.yml?label=Tests)](https://github.com/knotsphp/system/actions/workflows/test.yml)
 
 A modern PHP library to get system information with Enums and Value Objects.
 
@@ -32,16 +26,7 @@ composer require knotsphp/system
 ## 📚 Usage
 
 ```php
-use KnotsPHP\System\System;
-
-// Flush DNS cache
-$success = System::run(); 
-
-// Only get the command
-$command = System::getCommand();
-
-// Check if the command needs elevated privileges
-$needsElevation = System::needsElevation();
+WIP
 ```
 
 ## 📚 Use in command line
@@ -56,10 +41,10 @@ composer global require knotsphp/system
 Then you can use the `system` command to get the public IP address of the current machine.
 ```bash
 # In your project directory
-vendor/bin/system
+vendor/bin/sysinfo
 
 # Globally installed
-system
+sysinfo
 ```
 
 ## 📖 Documentation
