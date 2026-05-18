@@ -2,6 +2,7 @@
 <?php
 
 use KnotsPHP\System\System;
+use NunoMaduro\Collision\Provider;
 
 error_reporting(E_ALL ^ E_DEPRECATED ^ E_NOTICE);
 
@@ -10,7 +11,7 @@ if (! class_exists('\Composer\InstalledVersions')) {
 }
 
 if (class_exists('\NunoMaduro\Collision\Provider')) {
-    (new \NunoMaduro\Collision\Provider)->register();
+    (new Provider)->register();
 }
 
 $ipVersion = null;

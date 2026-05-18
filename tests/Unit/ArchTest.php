@@ -1,5 +1,9 @@
 <?php
 
+use KnotsPHP\System\Exceptions\Exception;
+use KnotsPHP\System\Exceptions\InvalidArgumentException;
+use KnotsPHP\System\Exceptions\RuntimeException;
+
 arch('enums')
     ->expect('KnotsPHP\System\Enums')
     ->toBeEnums();
@@ -14,10 +18,10 @@ arch('contracts')
 
 arch('exceptions')
     ->expect('KnotsPHP\System\Exceptions')
-    ->toExtend(\KnotsPHP\System\Exceptions\Exception::class)
-    ->ignoring(\KnotsPHP\System\Exceptions\Exception::class)
-    ->ignoring(\KnotsPHP\System\Exceptions\InvalidArgumentException::class)
-    ->ignoring(\KnotsPHP\System\Exceptions\RuntimeException::class);
+    ->toExtend(Exception::class)
+    ->ignoring(Exception::class)
+    ->ignoring(InvalidArgumentException::class)
+    ->ignoring(RuntimeException::class);
 
 arch('library.operating-system')
     ->expect('KnotsPHP\System\OperatingSystems')
