@@ -3,7 +3,6 @@
 namespace KnotsPHP\System\OperatingSystems;
 
 use KnotsPHP\System\Contracts\OperatingSystemContract;
-use KnotsPHP\System\Exceptions\InvalidArgumentException;
 use KnotsPHP\System\Helpers\Shell;
 
 final class Windows implements OperatingSystemContract
@@ -25,8 +24,14 @@ final class Windows implements OperatingSystemContract
 
     private function retrieveFromSwVers(): void
     {
-        // wmic was removed in Windows 11 24H2 / Server 2025; use CIM via PowerShell instead.
-        $result = Shell::exec('powershell -NoProfile -Command "Get-CimInstance Win32_OperatingSystem | ForEach-Object { \'Caption=\'+$_.Caption; \'Version=\'+$_.Version; \'BuildNumber=\'+$_.BuildNumber }"');
+        // wmic was removed in Windows 11 24H2 / Server 2025; use PowerShell instead.
+        // -EncodedCommand sidesteps cmd.exe nested-quote issues. Decoded script:
+        //   $o=Get-CimInstance Win32_OperatingSystem;
+        //   $v=[Environment]::OSVersion.Version;
+        //   'Caption='+$o.Caption;
+        //   'Version='+$v.Major+'.'+$v.Minor+'.'+$v.Build;
+        //   'BuildNumber='+$v.Build
+        $result = Shell::exec('powershell -NoProfile -EncodedCommand JABvAD0ARwBlAHQALQBDAGkAbQBJAG4AcwB0AGEAbgBjAGUAIABXAGkAbgAzADIAXwBPAHAAZQByAGEAdABpAG4AZwBTAHkAcwB0AGUAbQA7ACQAdgA9AFsARQBuAHYAaQByAG8AbgBtAGUAbgB0AF0AOgA6AE8AUwBWAGUAcgBzAGkAbwBuAC4AVgBlAHIAcwBpAG8AbgA7ACcAQwBhAHAAdABpAG8AbgA9ACcAKwAkAG8ALgBDAGEAcAB0AGkAbwBuADsAJwBWAGUAcgBzAGkAbwBuAD0AJwArACQAdgAuAE0AYQBqAG8AcgArACcALgAnACsAJAB2AC4ATQBpAG4AbwByACsAJwAuACcAKwAkAHYALgBCAHUAaQBsAGQAOwAnAEIAdQBpAGwAZABOAHUAbQBiAGUAcgA9ACcAKwAkAHYALgBCAHUAaQBsAGQA');
         // Caption=Microsoft Windows 11 Pro
         // Version=10.0.22631
         // BuildNumber=22631
@@ -94,9 +99,9 @@ final class Windows implements OperatingSystemContract
         // 10.0.22631 / 10.0.20348
         $versionParts = explode('.', $versionString);
 
-        // Check if the version string is valid
+        // Bail out gracefully on malformed input rather than crashing the constructor.
         if (count($versionParts) < 2) {
-            throw new InvalidArgumentException('Invalid Windows version string: '.$versionString);
+            return null;
         }
 
         // Extract major and minor version numbers
