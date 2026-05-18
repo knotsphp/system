@@ -25,10 +25,11 @@ final class Windows implements OperatingSystemContract
 
     private function retrieveFromSwVers(): void
     {
-        $result = Shell::exec('wmic os get Caption, Version, BuildNumber /format:list');
-        // BuildNumber=22631
-        // Caption=Microsoft Windows 11 Famille
+        // wmic was removed in Windows 11 24H2 / Server 2025; use CIM via PowerShell instead.
+        $result = Shell::exec('powershell -NoProfile -Command "Get-CimInstance Win32_OperatingSystem | ForEach-Object { \'Caption=\'+$_.Caption; \'Version=\'+$_.Version; \'BuildNumber=\'+$_.BuildNumber }"');
+        // Caption=Microsoft Windows 11 Pro
         // Version=10.0.22631
+        // BuildNumber=22631
 
         $lines = explode(PHP_EOL, $result);
 
@@ -41,7 +42,7 @@ final class Windows implements OperatingSystemContract
 
         $this->cached_name = 'Windows';
 
-        if (str_contains($infos['Caption'], 'Server')) {
+        if (str_contains($infos['Caption'] ?? '', 'Server')) {
             // Server 2022
             $this->cached_edition = implode(' ', array_slice(explode(' ', $infos['Caption']), 2));
             $this->cached_version = $this->getWindowsVersion($infos['Version'] ?? '');
